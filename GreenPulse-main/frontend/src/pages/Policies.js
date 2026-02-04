@@ -100,11 +100,11 @@ const Policies = () => {
                     <ExternalLink className="ml-2 w-4 h-4" />
                   </a>
                   <Link
-                    to="/apply"
-                    data-testid={`policy-${policy.id}-apply-btn`}
+                    to={`/policies/${policy.id}`}
+                    data-testid={`policy-${policy.id}-details-btn`}
                     className="flex items-center justify-center px-4 py-2 border-2 border-emerald-600 text-emerald-700 rounded-lg font-medium hover:bg-emerald-50 transition-colors text-sm"
                   >
-                    How to Apply
+                    View Details
                   </Link>
                 </div>
               </div>

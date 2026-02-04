@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { CheckCircle2, Circle, FileText, User, Building, Mail, Phone, MapPin, Loader2 } from 'lucide-react';
 import { applicationSteps, requiredDocuments } from '../data/mockData';
 import { fetchPolicies, submitApplication } from '../lib/api';
+import MyApplications from '../components/MyApplications';
 
 const Apply = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -372,6 +373,11 @@ const Apply = () => {
               </div>
             </div>
           )}
+        </div>
+
+        {/* List of Applications */}
+        <div className="mt-12">
+          <MyApplications />
         </div>
       </div>
     </div>
