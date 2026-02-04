@@ -1,60 +1,15 @@
-import { useState, useEffect } from 'react';
-import { CheckCircle2, Circle, FileText, User, Building, Mail, Phone, MapPin, Loader2 } from 'lucide-react';
-import { applicationSteps, requiredDocuments } from '../data/mockData';
-import { fetchPolicies, submitApplication } from '../lib/api';
+import { useState } from 'react';
+import { CheckCircle2, Circle, FileText, User, Building, Mail, Phone, MapPin } from 'lucide-react';
+import { applicationSteps, requiredDocuments, policies } from '../data/mockData';
 
 const Apply = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedScheme, setSelectedScheme] = useState('');
   const [applicationStatus, setApplicationStatus] = useState(null);
-  const [policies, setPolicies] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    organization: '',
-    address: ''
-  });
 
-  useEffect(() => {
-    const loadPolicies = async () => {
-      try {
-        const data = await fetchPolicies();
-        setPolicies(data);
-      } catch (err) {
-        console.error('Failed to load policies', err);
-      }
-    };
-    loadPolicies();
-  }, []);
-
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true);
-    try {
-      await submitApplication({
-        userDetails: {
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          organization: formData.organization
-        },
-        selectedScheme: selectedScheme,
-        documents: requiredDocuments, // Mocking document list for now
-        address: formData.address
-      });
-      setApplicationStatus('submitted');
-    } catch (err) {
-      alert('Failed to submit application. Please check if the backend is running.');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setApplicationStatus('submitted');
   };
 
   return (
@@ -225,9 +180,6 @@ const Apply = () => {
                       <User className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
                       <input
                         type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleInputChange}
                         data-testid="applicant-name-input"
                         required
                         className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
@@ -244,9 +196,6 @@ const Apply = () => {
                       <Mail className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
                       <input
                         type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
                         data-testid="applicant-email-input"
                         required
                         className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
@@ -263,9 +212,6 @@ const Apply = () => {
                       <Phone className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
                       <input
                         type="tel"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleInputChange}
                         data-testid="applicant-phone-input"
                         required
                         className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
@@ -282,9 +228,6 @@ const Apply = () => {
                       <Building className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
                       <input
                         type="text"
-                        name="organization"
-                        value={formData.organization}
-                        onChange={handleInputChange}
                         data-testid="organization-input"
                         className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                         placeholder="Company/Organization name"
@@ -300,9 +243,6 @@ const Apply = () => {
                   <div className="relative">
                     <MapPin className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
                     <textarea
-                      name="address"
-                      value={formData.address}
-                      onChange={handleInputChange}
                       data-testid="address-input"
                       required
                       rows="3"
@@ -323,14 +263,9 @@ const Apply = () => {
                   <button
                     type="submit"
                     data-testid="submit-application-btn"
-                    disabled={loading}
-                    className="flex-1 px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-700 transition-colors disabled:bg-emerald-300 flex items-center justify-center"
+                    className="flex-1 px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-700 transition-colors"
                   >
-                    {loading ? (
-                      <Loader2 className="w-5 h-5 animate-spin" />
-                    ) : (
-                      'Submit Application'
-                    )}
+                    Submit Application
                   </button>
                 </div>
               </form>

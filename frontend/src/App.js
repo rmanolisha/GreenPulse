@@ -7,7 +7,6 @@ import Policies from "./pages/Policies";
 import Apply from "./pages/Apply";
 import Datasets from "./pages/Datasets";
 import Dashboard from "./pages/Dashboard";
-import CitizenDashboard from "./pages/CitizenDashboard";
 import About from "./pages/About";
 
 function App() {
@@ -21,7 +20,6 @@ function App() {
           <Route path="/apply" element={<Apply />} />
           <Route path="/datasets" element={<Datasets />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/citizen-dashboard" element={<CitizenDashboard />} />
           <Route path="/about" element={<About />} />
         </Routes>
         <Footer />

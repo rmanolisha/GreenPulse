@@ -1,36 +1,9 @@
-import { useState, useEffect } from 'react';
 import { BarChart, Bar, LineChart, Line, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { TrendingUp, Zap, Car as CarIcon, Leaf, Loader2 } from 'lucide-react';
-import { solarAdoptionData, evGrowthData, energyMixData } from '../data/mockData';
-import { fetchDashboardStats } from '../lib/api';
+import { TrendingUp, Zap, Car as CarIcon, Leaf } from 'lucide-react';
+import { dashboardStats, solarAdoptionData, evGrowthData, energyMixData } from '../data/mockData';
 
 const Dashboard = () => {
-  const [stats, setStats] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const COLORS = ['#f59e0b', '#3b82f6', '#06b6d4', '#22c55e', '#8b5cf6'];
-
-  useEffect(() => {
-    const loadStats = async () => {
-      try {
-        const data = await fetchDashboardStats('government');
-        setStats(data);
-      } catch (err) {
-        setError('Failed to load dashboard data.');
-      } finally {
-        setLoading(false);
-      }
-    };
-    loadStats();
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <Loader2 className="w-12 h-12 text-emerald-600 animate-spin" />
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-gray-50 py-12">
@@ -53,11 +26,11 @@ const Dashboard = () => {
                 <Zap className="w-6 h-6 text-amber-600" />
               </div>
               <span className="text-xs px-2 py-1 bg-green-100 text-green-700 rounded-full font-semibold">
-                +12%
+                {dashboardStats.solarCapacity.change}
               </span>
             </div>
             <div className="text-3xl font-bold text-gray-900 mb-1">
-              {stats.solarAdoptionProgress}
+              {dashboardStats.solarCapacity.value} <span className="text-lg text-gray-600">{dashboardStats.solarCapacity.unit}</span>
             </div>
             <div className="text-sm text-gray-600">Total Solar Capacity</div>
           </div>
@@ -68,11 +41,11 @@ const Dashboard = () => {
                 <CarIcon className="w-6 h-6 text-blue-600" />
               </div>
               <span className="text-xs px-2 py-1 bg-green-100 text-green-700 rounded-full font-semibold">
-                {stats.evGrowthPercentage}
+                {dashboardStats.evAdoption.change}
               </span>
             </div>
             <div className="text-3xl font-bold text-gray-900 mb-1">
-              {stats.evGrowthPercentage}
+              {dashboardStats.evAdoption.value}
             </div>
             <div className="text-sm text-gray-600">EV Adoption Rate</div>
           </div>
@@ -83,13 +56,13 @@ const Dashboard = () => {
                 <Leaf className="w-6 h-6 text-emerald-600" />
               </div>
               <span className="text-xs px-2 py-1 bg-green-100 text-green-700 rounded-full font-semibold">
-                +8%
+                {dashboardStats.carbonReduction.change}
               </span>
             </div>
             <div className="text-3xl font-bold text-gray-900 mb-1">
-              {stats.renewableEnergyMix}
+              {dashboardStats.carbonReduction.value}
             </div>
-            <div className="text-sm text-gray-600">Renewable Energy Mix</div>
+            <div className="text-sm text-gray-600">{dashboardStats.carbonReduction.unit}</div>
           </div>
 
           <div data-testid="kpi-hydrogen" className="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-lg transition-shadow">
@@ -98,13 +71,13 @@ const Dashboard = () => {
                 <TrendingUp className="w-6 h-6 text-purple-600" />
               </div>
               <span className="text-xs px-2 py-1 bg-blue-100 text-blue-700 rounded-full font-semibold">
-                +15%
+                {dashboardStats.greenHydrogen.change}
               </span>
             </div>
             <div className="text-3xl font-bold text-gray-900 mb-1">
-              {stats.policyPerformanceSummary}
+              {dashboardStats.greenHydrogen.value} <span className="text-lg text-gray-600">{dashboardStats.greenHydrogen.unit}</span>
             </div>
-            <div className="text-sm text-gray-600">Policy Performance</div>
+            <div className="text-sm text-gray-600">Green Hydrogen</div>
           </div>
         </div>
 

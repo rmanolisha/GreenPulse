@@ -24,7 +24,7 @@ app.use('/api/datasets', datasetRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 
 // Root Endpoint
-app.get('/', (req, res) => {
+app.get('/', (_req, res) => {
   res.json({
     message: "Welcome to GreenPulse India API",
     version: "1.0.0",

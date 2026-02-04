@@ -11,8 +11,7 @@ const Navbar = () => {
     { name: 'Policies', path: '/policies' },
     { name: 'Apply Schemes', path: '/apply' },
     { name: 'Datasets', path: '/datasets' },
-    { name: 'Gov Dashboard', path: '/dashboard' },
-    { name: 'My Impact', path: '/citizen-dashboard' },
+    { name: 'Dashboard', path: '/dashboard' },
     { name: 'About', path: '/about' }
   ];
 
