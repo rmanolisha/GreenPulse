@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Solar capacity by state",
+    "description": "State-wise installed solar power capacity across India including rooftop and ground-mounted installations.",
+    "source": "Government of India – mock"
+  },
+  {
+    "id": 2,
+    "name": "EV adoption trends",
+    "description": "Monthly EV registration data including two-wheelers, three-wheelers, and four-wheelers across all states.",
+    "source": "Government of India – mock"
+  },
+  {
+    "id": 3,
+    "name": "Wind & bio-energy capacity",
+    "description": "Comprehensive data on wind farms, biomass plants, and small hydro projects operational across India.",
+    "source": "Government of India – mock"
+  },
+  {
+    "id": 4,
+    "name": "Afforestation & carbon sink data",
+    "description": "Data on forest cover increase, carbon sequestration rates, and ecological restoration projects under Green India Mission.",
+    "source": "Government of India – mock"
+  }
+]

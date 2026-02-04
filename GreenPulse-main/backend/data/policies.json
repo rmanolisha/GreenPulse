@@ -1,0 +1,116 @@
+[
+  {
+    "id": 1,
+    "name": "PM Surya Ghar Rooftop Solar",
+    "description": "Free solar rooftop installation scheme for 1 crore households. Get up to 40% subsidy on installation costs and reduce electricity bills significantly.",
+    "category": "Renewable Energy",
+    "officialLink": "https://pmsuryaghar.gov.in/",
+    "eligibility": [
+      "Resident of India",
+      "Own a house with a suitable roof",
+      "Valid electricity connection"
+    ],
+    "benefits": [
+      "Up to 40% subsidy on installation",
+      "Reduced monthly electricity bills",
+      "Sell excess power back to the grid"
+    ],
+    "applicationGuide": [
+      "Register on the official portal",
+      "Apply for technical feasibility",
+      "Select a registered vendor for installation",
+      "Submit installation details for subsidy release"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "FAME India (EV)",
+    "description": "Faster Adoption and Manufacturing of Electric Vehicles scheme with subsidies for EV purchase and charging infrastructure development.",
+    "category": "Green Mobility",
+    "officialLink": "https://fame2.heavyindustries.gov.in/",
+    "eligibility": [
+      "Individual buyers of electric two-wheelers/four-wheelers",
+      "Commercial fleet operators",
+      "State transport undertakings"
+    ],
+    "benefits": [
+      "Direct purchase subsidies",
+      "Exemption from road tax in many states",
+      "Lower interest rates on EV loans"
+    ],
+    "applicationGuide": [
+      "Purchase EV from authorized dealer",
+      "Dealer applies for subsidy on behalf of buyer",
+      "Subsidy is deducted from the ex-showroom price"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "National Green Hydrogen Mission",
+    "description": "₹19,744 crore mission to make India a global hub for green hydrogen production, targeting 5 MMT annual production by 2030.",
+    "category": "Clean Energy",
+    "officialLink": "https://pib.gov.in/",
+    "eligibility": [
+      "Industrial entities",
+      "Energy producers",
+      "Research and development organizations"
+    ],
+    "benefits": [
+      "Incentives for green hydrogen production (SIGHT scheme)",
+      "Support for pilot projects",
+      "Creation of green hydrogen hubs"
+    ],
+    "applicationGuide": [
+      "Respond to Request for Proposals (RFP) by MNRE",
+      "Submit detailed project report (DPR)",
+      "Technical and financial evaluation",
+      "Sanction of incentives"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "GOBARdhan",
+    "description": "Galvanizing Organic Bio-Agro Resources scheme converting cattle dung and agricultural waste into biogas, bio-CNG, and organic manure.",
+    "category": "Agriculture & Biodiversity",
+    "officialLink": "https://sbm.gov.in/",
+    "eligibility": [
+      "Farmers and rural households",
+      "Self-Help Groups (SHGs)",
+      "Gram Panchayats"
+    ],
+    "benefits": [
+      "Waste-to-wealth creation",
+      "Clean fuel for cooking and lighting",
+      "High-quality organic manure for farming"
+    ],
+    "applicationGuide": [
+      "Register on the GOBARdhan portal",
+      "Submit proposal for biogas plant installation",
+      "Physical verification by local authorities",
+      "Fund disbursement"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Green India Mission",
+    "description": "Afforestation program targeting 5 million hectares to increase forest cover, enhance ecosystem services, and create carbon sinks.",
+    "category": "Agriculture & Biodiversity",
+    "officialLink": "https://moef.gov.in/",
+    "eligibility": [
+      "Community forest groups",
+      "State forest departments",
+      "NGOs working in environmental sector"
+    ],
+    "benefits": [
+      "Restoration of degraded forest lands",
+      "Livelihood support for forest-dependent communities",
+      "Enhanced biodiversity and carbon sequestration"
+    ],
+    "applicationGuide": [
+      "Submit afforestation project plan",
+      "Technical survey of proposed land",
+      "Approval by State Steering Committee",
+      "Implementation and periodic monitoring"
+    ]
+  }
+]

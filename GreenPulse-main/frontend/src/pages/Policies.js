@@ -1,17 +1,52 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ExternalLink, Sun, Wind, Car, Leaf, Trees, BadgeIndianRupee } from 'lucide-react';
-import { policies } from '../data/mockData';
+import { ExternalLink, Sun, Wind, Car, Leaf, Trees, BadgeIndianRupee, Loader2 } from 'lucide-react';
+import { fetchPolicies } from '../lib/api';
 
 const iconMap = {
-  sun: Sun,
-  wind: Wind,
-  car: Car,
-  leaf: Leaf,
-  trees: Trees,
-  'badge-indian-rupee': BadgeIndianRupee
+  'PM Surya Ghar Rooftop Solar': Sun,
+  'FAME India (EV)': Car,
+  'National Green Hydrogen Mission': Wind,
+  'GOBARdhan': Leaf,
+  'Green India Mission': Trees,
+  default: BadgeIndianRupee
 };
 
 const Policies = () => {
+  const [policiesList, setPoliciesList] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const loadPolicies = async () => {
+      try {
+        const data = await fetchPolicies();
+        setPoliciesList(data);
+      } catch (err) {
+        setError('Failed to load policies. Please try again later.');
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadPolicies();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <Loader2 className="w-12 h-12 text-emerald-600 animate-spin" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-red-600">
+        {error}
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gray-50 py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -28,8 +63,8 @@ const Policies = () => {
 
         {/* Policies Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {policies.map((policy) => {
-            const Icon = iconMap[policy.icon];
+          {policiesList.map((policy) => {
+            const Icon = iconMap[policy.name] || iconMap.default;
             return (
               <div 
                 key={policy.id}
